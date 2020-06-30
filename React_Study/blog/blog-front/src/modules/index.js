@@ -1,16 +1,17 @@
-import { createAction, handleActions } from 'redux-actions';
+import { combineReducers } from 'redux';
+import { all } from 'redux-saga/effects';
+import auth, { authSaga } from './auth';
+import loading from './loading';
+import user, { userSaga } from './user';
 
-const SAMPLE_ACTION = 'auth/SAMPLE_ACTION';
+const rootReducer = combineReducers({
+  auth,
+  loading,
+  user,
+});
 
-export const sampleAction = createAction(SAMPLE_ACTION);
+export function* rootSaga() {
+  yield all([authSaga(), userSaga()]);
+}
 
-const initialState = {};
-
-const auth = handleActions(
-  {
-    [SAMPLE_ACTION]: (state, action) => state,
-  },
-  initialState,
-);
-
-export default auth;
+export default rootReducer;
