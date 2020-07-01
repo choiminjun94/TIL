@@ -1,11 +1,12 @@
 import React from 'react';
-import Button from '../components/common/Button';
-
+import Header from '../components/common/Header'
 const PostListPage = () => {
   return (
-    <div>
-      <Button>버튼</Button>
-    </div>
+    <>
+      <Header />
+      <br/>
+      <div>Minjun 게시판 자료 입니다. </div>
+    </>
   );
 };
 
