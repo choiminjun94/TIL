@@ -5,10 +5,9 @@ export const write = async ctx => {
   const post = new Post({
     title, 
     body,
-    tags,
-    user : ctx.state.user,
+    tags
   });
-  try{ 
+  try{
     await post.save();
     ctx.body = post;
   }catch(e){
